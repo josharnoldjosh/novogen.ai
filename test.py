@@ -14,16 +14,13 @@ data = data.iloc[1:] # Drop first row which is a header
 data = data.iloc[0:50000] # Limit molecules
 print("Done!\n")
 
-print("Test", data[0])
-
 # Parse smiles from data
 print("Creating smiles...")   
 smiles = []
 minLen = 10000
 maxLen = 0
 for d in data[0]:
-	split_data = d.split()	
-	print(split_data)
+	split_data = d.split()
 	molecule = split_data[1] + "\n" # Add end of line character, \n
 	smiles.append(molecule)
 	if len(molecule) > maxLen:

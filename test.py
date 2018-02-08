@@ -24,9 +24,9 @@ maxLen = 0
 for d in data[0]:
 	split_data = d.split()	
 	print(split_data)
-    molecule = split_data[1] + "\n" # Add end of line character, \n
-    smiles.append(molecule)
-    if len(molecule) > maxLen:
+	molecule = split_data[1] + "\n" # Add end of line character, \n
+	smiles.append(molecule)
+	if len(molecule) > maxLen:
         maxLen = len(molecule)
     elif len(molecule) < minLen:
         minLen = len(molecule)

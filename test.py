@@ -27,9 +27,9 @@ for d in data[0]:
 	molecule = split_data[1] + "\n" # Add end of line character, \n
 	smiles.append(molecule)
 	if len(molecule) > maxLen:
-        maxLen = len(molecule)
-    elif len(molecule) < minLen:
-        minLen = len(molecule)
+		maxLen = len(molecule)
+	elif len(molecule) < minLen:
+		minLen = len(molecule)
 print("Done!\n")   
 
 # Create list of possible chars

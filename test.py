@@ -87,12 +87,19 @@ model.add(Dropout(0.2))
 model.add(Dense(y.shape[1], activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 
+# Load previous model
+import os
+from keras.models import load_model
+if os.path.exists("checkpoints/best.hdf5"):
+	model = load_model('checkpoints/best.hdf5')
+	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
 # Define the checkpoint
-filepath="checkpoints/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
+filepath="checkpoints/best.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 
-model.fit(X, y, epochs=100, batch_size=128, callbacks=callbacks_list)
+model.fit(X, y, epochs=100, batch_size=64, callbacks=callbacks_list)
 
 # load the network weights
 #filename = "weights-improvement-01-1.1467.hdf5"

@@ -11,7 +11,7 @@ print("Loading data...")
 import pandas as pd
 data = pd.read_csv('data.txt', sep=" ", header=None) # Load almost two million fucking molecules! 
 data = data.iloc[1:] # Drop first row which is a header
-data = data.iloc[0:50000] # Limit molecules
+data = data.iloc[0:500] # Limit molecules
 print("Done!\n")
 
 # Parse smiles from data
@@ -48,7 +48,7 @@ print("Done!\n")
 print("Generating patterns...")  
 X_data = []
 y_data = []
-seq_len = 20
+seq_len = 5
 step = 1
 for smile in smiles:
     for i in range(0, len(smile) - seq_len, step):

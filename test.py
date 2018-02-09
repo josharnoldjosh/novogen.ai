@@ -11,7 +11,7 @@ print("Loading data...")
 import pandas as pd
 data = pd.read_csv('data.txt', sep=" ", header=None) # Load almost two million fucking molecules! 
 data = data.iloc[1:] # Drop first row which is a header
-data = data.iloc[0:500] # Limit molecules
+data = data.iloc[0:1000] # Limit molecules
 print("Done!\n")
 
 # Parse smiles from data
@@ -92,7 +92,7 @@ filepath="checkpoints/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 
-model.fit(X, y, epochs=20, batch_size=128, callbacks=callbacks_list)
+model.fit(X, y, epochs=100, batch_size=128, callbacks=callbacks_list)
 
 # load the network weights
 #filename = "weights-improvement-01-1.1467.hdf5"

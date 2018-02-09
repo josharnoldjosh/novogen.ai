@@ -100,7 +100,7 @@ filepath="checkpoints/best.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 
-model.fit(X, y, epochs=1000, batch_size=256, callbacks=callbacks_list)
+model.fit(X, y, epochs=1000, batch_size=512, callbacks=callbacks_list)
 
 # load the network weights
 #filename = "weights-improvement-01-1.1467.hdf5"

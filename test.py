@@ -11,7 +11,7 @@ print("Loading data...")
 import pandas as pd
 data = pd.read_csv('data.txt', sep=" ", header=None) # Load almost two million fucking molecules! 
 data = data.iloc[1:] # Drop first row which is a header
-data = data.iloc[0:1000] # Limit molecules
+data = data.iloc[0:10000] # Limit molecules
 print("Done!\n")
 
 # Parse smiles from data
@@ -48,7 +48,7 @@ print("Done!\n")
 print("Generating patterns...")  
 X_data = []
 y_data = []
-seq_len = 10
+seq_len = 5
 step = 1
 for smile in smiles:
     for i in range(0, len(smile) - seq_len, step):
@@ -93,7 +93,7 @@ from keras.models import load_model
 if os.path.exists("checkpoints/best.hdf5"):
 	model = load_model('checkpoints/best.hdf5')
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-	print("Loading previous model!\n")
+	print("Using previous model!\n")
 
 # Define the checkpoint
 filepath="checkpoints/best.hdf5"

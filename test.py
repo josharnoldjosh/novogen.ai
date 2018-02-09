@@ -11,7 +11,7 @@ print("Loading data...")
 import pandas as pd
 data = pd.read_csv('data.txt', sep=" ", header=None) # Load almost two million fucking molecules! 
 data = data.iloc[1:] # Drop first row which is a header
-data = data.iloc[0:10000] # Limit molecules
+data = data.iloc[0:1000] # Limit molecules
 print("Done!\n")
 
 # Parse smiles from data
